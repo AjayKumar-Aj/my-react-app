@@ -1,5 +1,7 @@
 import React from "react";
+
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 import "./App.css";
 
 const App = () => {
@@ -22,9 +24,24 @@ const App = () => {
       title: "Bus Insurance",
       amount: "Rs. 300",
     },
+    {
+      id: 4,
+      date: new Date(2021, 5, 4),
+      title: "Lorry Insurance",
+      amount: "Rs. 400",
+    }
   ];
+
+  const addExpenseHandler = (expenseDateFromNewExpense) => {
+    return(
+      console.log(expenseDateFromNewExpense)
+    );
+  };  
+
+
   return (
     <div className="App">
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses items={expenseItemData}/> 
     </div>
   );
