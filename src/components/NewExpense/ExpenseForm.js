@@ -80,14 +80,14 @@ const ExpenseForm = (props) => {
 
     const expenses = {
       title: enteredTitle,
-      amount: enteredAmount,
-      date: new Date(enteredDate).toLocaleString()
+      amount: +enteredAmount,
+      date: new Date(enteredDate),
     };
 
     props.onSaveExpenseData(expenses);
-    setenteredTitle('');
-    setenteredAmount('');
-    setenteredDate('');
+    setenteredTitle("");
+    setenteredAmount("");
+    setenteredDate("");
   };
 
   return (
@@ -95,7 +95,11 @@ const ExpenseForm = (props) => {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -112,13 +116,16 @@ const ExpenseForm = (props) => {
           <input
             type="date"
             min="2019-01-01"
-            max="2021-12-31"
+            max="2022-12-31"
             value={enteredDate}
             onChange={dateChangeHandler}
           />
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
